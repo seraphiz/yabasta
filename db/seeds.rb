@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Tag.destroy_all
-tag = ["Amenaza", "Acoso verbal", "Acoso físico", "Estupro", "Homofobia", "Racismo", "Atentado en contral el pudor", "Exploración sexual", "Stalking", "Transfobia", "Violencia doméstica", "Otros"]
+tag = ["Prefiero no decirlo", "Amenaza", "Acoso verbal", "Acoso físico", "Estupro", "Homofobia", "Racismo", "Atentado en contral el pudor", "Exploración sexual", "Stalking", "Transfobia", "Violencia doméstica", "Otros"]
 
 tag.each do |tag|
     Tag.create(

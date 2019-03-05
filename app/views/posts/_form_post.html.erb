@@ -1,26 +1,28 @@
 <%= form_with(model: post) do |f| %>
 <%= f.label :tag_id, 'Tipo de crimen de odio:' %>
-<%= f.select :tag_id, @title_tag_select %>
-<br>
-<%= f.label :content, 'Describe tu relato:' %>
-<%= f.text_area :content %>
+<%= f.select :tag_id, @title_tag_select, prompt: "Seleccione un tipo de crimen de odio" %>
 <br>
 <%= f.label :date, 'Fecha del suceso:' %>
 <%= f.date_field :date, min: "2017-01-01", max: @date_today %>
 <br>
 <%= f.label :period_of_day, 'Periodo del día:' %>
-<%= f.text_field :period_of_day %>
+<%= f.select :period_of_day, options_for_select(@period_for_select), prompt: "Seleccione un periodo"%>
 <br>
-<%= f.label :age, 'Edad:' %>
+<%= f.label :age, 'Edad aproximada:' %>
 <%= f.number_field :age, {min:"0", max:"100"} %>
 <br>
-<%= f.label :name, 'Nombre:' %>
+<%= f.label :name, 'Nombre(Opcional):' %>
 <%= f.text_field :name %>
+<br>
+<%= f.label :content, 'Describe tu relato:' %>
+<br>
+<%= f.text_area :content, {rows:"6", cols:"50"} %>
 <br>
 <%= f.label :address, 'Ubicación del suceso:' %>
 <%= f.text_field :address %>
 <br>
 <%= f.label :anonymous, 'Relato anónimo:' %>
 <%= f.check_box :anonymous %>
+<br>
 <%= f.submit %>
 <% end %>

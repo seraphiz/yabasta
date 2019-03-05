@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_002431) do
+ActiveRecord::Schema.define(version: 2019_03_05_181152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_002431) do
   create_table "posts", force: :cascade do |t|
     t.string "content"
     t.date "date"
-    t.string "period_of_day"
+    t.integer "period_of_day"
     t.integer "age"
     t.boolean "anonymous", default: false
     t.float "latitude"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_002431) do
     t.string "address"
     t.bigint "user_id"
     t.bigint "tag_id"
+    t.string "name"
     t.index ["tag_id"], name: "index_posts_on_tag_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
