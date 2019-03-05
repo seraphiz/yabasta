@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">¡Ya BASTA!</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="<%= root_path %>">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Relatos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Informaciones</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Sobre nosotros</a>
+      </li>
+    </ul>
+<ul class="navbar-nav ml-auto">
+    <% if signed_in? %>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Hola <%= current_user.email %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Mi perfil</a>
+          <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>        
+        </div>
+      </li>
+    
+    <% else %>
+    <li class="nav-item">
+        <%= link_to "Iniciar sesión", new_user_session_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item">
+        <%= link_to "Registrarse", new_user_registration_path, class: 'nav-link' %>
+    </li>
+    <% end %>
+
+    </ul>
+  </div>
+</nav>
