@@ -5,9 +5,8 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @date_today = Date.today
-    respond_to do |format|
-      format.js
-    end
+    @title_tag_select = Tag.pluck(:title, :id)
+    respond_to :js
   end 
 
   def create

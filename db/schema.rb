@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(version: 2019_03_05_002431) do
   create_table "posts", force: :cascade do |t|
     t.string "content"
     t.date "date"
-    t.integer "period_of_day"
+    t.string "period_of_day"
     t.integer "age"
     t.boolean "anonymous", default: false
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "adress"
+    t.string "address"
     t.bigint "user_id"
     t.bigint "tag_id"
     t.index ["tag_id"], name: "index_posts_on_tag_id"
