@@ -1,0 +1,11 @@
+<%= form_with(model: post) do |f| %>
+<%= f.label :title, 'Tipo de crime de ódio:' %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :date, 'Fecha del ocurrido:' %>
+<%= f.date_field :date, min: "2017-01-01", max: @date_today %>
+<br>
+<%= f.label :period_of_day, 'Periodo del día:' %>
+<%= f.text_field :period_of_day %>
+<%= f.submit %>
+<% end %>
