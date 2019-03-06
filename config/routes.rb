@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'tags/index'
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions', registrations: 'users/registrations'
+  }
   resources :posts do
     get :home, on: :collection
   end 
