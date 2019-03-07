@@ -1,13 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 # Tag.destroy_all
-SocialGroup.destroy_all
-# tag = ["Prefiero no decirlo", "Amenaza", "Acoso verbal", "Acoso físico", "Estupro", "Homofobia", "Racismo", "Atentado en contral el pudor", "Exploración sexual", "Stalking", "Transfobia", "Violencia doméstica", "Xenofobia" "Otros"]
+# # SocialGroup.destroy_all
+# tag = ["Prefiero no decirlo", "Amenaza", "Acoso verbal", "Acoso físico", "Estupro", "Homofobia", "Racismo", "Atentado en contral el pudor", "Exploración sexual", "Stalking", "Transfobia", "Violencia doméstica", "Xenofobia", "Otros"]
 
 # tag.each do |tag|
 #     Tag.create(
@@ -15,10 +9,41 @@ SocialGroup.destroy_all
 #     )
 # end 
 
-social_group = ["Homosexuales", "Bisexuales", "Transexuales", "Extrangeros", "Indígenas", "Negros", "Personas en situacion de discapacidad", "Mujeres"]
+# social_group = ["Homosexuales", "Bisexuales", "Transexuales", "Extrangeros", "Indígenas", "Negros", "Personas en situacion de discapacidad", "Mujeres"]
 
-social_group.each do |asignacion|
-    SocialGroup.create(
-        name: asignacion
+# social_group.each do |asignacion|
+#     SocialGroup.create(
+#         name: asignacion
+#     )
+# end 
+
+# 20.times do |i|
+#     User.create(
+#     name: Faker::Name.name,
+#     email: Faker::Internet.email,
+#     password: "123456",
+#     genre: ["Masculino", "Femenino", "Otro"].sample,
+#     birthdate: Faker::Date.birthday(18, 65),
+#     username: "Joao das Neves #{i+1}"
+#     )
+# end
+
+Post.destroy_all
+tags = Tag.ids
+users = User.ids
+periodo = ["Mañana", "Tarde", "Noche", "Madrugada"]
+
+50.times do 
+    Post.create(
+        tag_id: tags.sample,
+        user_id: users.sample,
+        date: "21/12/2018",
+        age: rand(1..64),
+        period_of_day: periodo.sample,
+        address: Faker::Address.street_name,
+        name: Faker::Name.name,
+        content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam odio mollitia tempora.",
+        anonymous: 0
+
     )
 end 

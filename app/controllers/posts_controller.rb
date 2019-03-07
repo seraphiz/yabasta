@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   def home
-    @posts 
   end
 
   def index
+    @posts = Post.all
   end 
 
   def new
@@ -14,16 +14,28 @@ class PostsController < ApplicationController
     respond_to :js
   end 
 
+  def show
+    @post = Post.find(params[:id])
+  end 
+
   def create
     @post = Post.new(post_params)
+
     @post.save
     redirect_to posts_path, notice: "Relato agreagado con exito"
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    byebug
+    redirect_to posts_path, notice: "Post borrado exitosamente"
   end
 
 
   private
 
   def post_params
-    params.require(:post).permit(:tag_id, :name, :date, :period_of_day, :age, :content, :address, :anonymous)
+    params.require(:post).permit(:tag_id, :name, :date, :period_of_day, :content, :age, :anonymous, :address)
   end 
 end

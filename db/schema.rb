@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_05_190833) do
+ActiveRecord::Schema.define(version: 2019_03_06_181246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_190833) do
   create_table "posts", force: :cascade do |t|
     t.string "content"
     t.date "date"
-    t.integer "period_of_day"
+    t.string "period_of_day"
     t.integer "age"
     t.boolean "anonymous", default: false
     t.float "latitude"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_190833) do
     t.bigint "user_id"
     t.bigint "tag_id"
     t.string "name"
+    t.boolean "active", default: false
     t.index ["tag_id"], name: "index_posts_on_tag_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -66,10 +67,8 @@ ActiveRecord::Schema.define(version: 2019_03_05_190833) do
     t.date "birthdate"
     t.string "genre"
     t.boolean "active", default: true
-    t.integer "role"
-    t.bigint "asignation_user_group_id"
+    t.integer "role", default: 1
     t.string "name"
-    t.index ["asignation_user_group_id"], name: "index_users_on_asignation_user_group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -78,5 +77,4 @@ ActiveRecord::Schema.define(version: 2019_03_05_190833) do
   add_foreign_key "asignation_user_groups", "users"
   add_foreign_key "posts", "tags"
   add_foreign_key "posts", "users"
-  add_foreign_key "users", "asignation_user_groups"
 end
