@@ -26,7 +26,7 @@ class PostsController < ApplicationController
         end
         format.js
       else
-        @posts = Post.all
+        @posts = Post.order("id DESC")
         format.html
       end
     end
@@ -46,15 +46,19 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id if current_user || nil
+    if @post.user_id == nil
+      @post.anonymous = true
+    else 
+    end 
     @post.save
 
-    redirect_to tag_path(@post.tag_id), notice: "Relato enviado para aprobacion con exito! Si fuiste victima de #{post.tag.title}, lea más abajo"
+    redirect_to tag_path(@post.tag_id), notice: "Relato enviado para aprobacion con exito! Si fuiste victima de #{@post.tag.title}, lea más abajo"
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    byebug
     redirect_to posts_path, notice: "Post borrado exitosamente"
   end
 

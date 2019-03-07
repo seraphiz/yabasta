@@ -2,7 +2,7 @@
 <%= f.label :tag_id, 'Tipo de crimen de odio:' %>
 <%= f.select :tag_id, @title_tag_select, prompt: "Seleccione un tipo de crimen de odio" %>
 <br>
-<%= f.label :date, 'Fecha del suceso:' %>
+<%= f.label :birth, 'Fecha del suceso:' %>
 <%= f.date_field :date, min: "2017-01-01", max: @date_today %>
 <br>
 <%= f.label :period_of_day, 'Periodo del día:' %>
@@ -21,8 +21,11 @@
 <%= f.label :address, 'Ubicación del suceso:' %>
 <%= f.text_field :address %>
 <br>
-<%= f.label :anonymous, 'Relato anónimo:' %>
-<%= f.check_box :anonymous %>
+<% if user_signed_in? %>
+    <%= f.label :anonymous, 'Relato anónimo:' %>
+    <%= f.check_box :anonymous %>
+<% else %>
+<% end %>
 <br>
 <%= f.submit %>
 <% end %>

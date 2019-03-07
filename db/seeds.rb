@@ -44,7 +44,7 @@ periodo = ["Prefiro no decirlo", "Mañana", "Tarde", "Noche", "Madrugada"]
         address: Faker::Address.street_name,
         name: Faker::Name.name,
         content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam odio mollitia tempora.",
-        anonymous: 0
+        anonymous: [true, false].sample
 
     )
 end 
