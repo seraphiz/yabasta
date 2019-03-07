@@ -17,6 +17,7 @@
 #     )
 # end 
 
+# User.destroy_all
 # 20.times do |i|
 #     User.create(
 #     name: Faker::Name.name,
@@ -31,13 +32,13 @@
 Post.destroy_all
 tags = Tag.ids
 users = User.ids
-periodo = ["Mañana", "Tarde", "Noche", "Madrugada"]
+periodo = ["Prefiro no decirlo", "Mañana", "Tarde", "Noche", "Madrugada"]
 
 50.times do 
     Post.create(
         tag_id: tags.sample,
         user_id: users.sample,
-        date: "21/12/2018",
+        date: Faker::Date.between(2.years.ago, Date.today),
         age: rand(1..64),
         period_of_day: periodo.sample,
         address: Faker::Address.street_name,

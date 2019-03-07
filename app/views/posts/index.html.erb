@@ -1,25 +1,43 @@
 <h1>
 RELATOS
 </h1>
+<%# <label for="">Buscar:</label>
+<input type="text" id="tipocrimen"> %>
+<label for="">Buscar por periodo:</label>
+<input type="text" id="buscador">
 
 <table class="table table-hover">
     <thead>
         <tr>
             <th>Title</th>
             <th>Author</th>
+            <th>Fecha</th>
+            <th>Periodo del dia</th>
         </tr>
     </thead>
-    <tbody>
-       
-        <% @posts.each do |post| %>
-         <tr>
-            <td><%= post.tag.title %></td>
-            <td><%= post.user.username %></td>
-            <td><%= post.period_of_day %></td>
-            <td><%= link_to 'Show', post_path(post) %></td>
-            <td><%= link_to 'Delete', post, method: :delete%></td>
-        </tr>
-        <% end %>
+    <tbody id="lista">
+       <%= render @posts %>
     </tbody>
 </table>
 
+<script>
+  $('#tipocrimen').keyup(function () {
+    var searchQuery = $('#tipocrimen').val();
+    $.ajax({
+      type: "GET",
+      url: "<%= posts_path %>",
+      data: { tipocrimen: searchQuery }
+    });
+  });
+</script>
+
+<script>
+  $('#buscador').keyup(function () {
+    var searchQuery = $('#buscador').val();
+    $.ajax({
+      type: "GET",
+      url: "<%= posts_path %>",
+      data: { buscador: searchQuery }
+    });
+  });
+</script>

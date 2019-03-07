@@ -3,7 +3,33 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+  #   respond_to do |format|
+  #     if !params[:tipocrimen].nil?
+  #       if params[:tipocrimen].blank?
+  #         @posts = Post.all
+  #       else
+  #        @tags = Tag.where('title LIKE ?', "%#{params[:tipocrimen]}%")
+  #       end
+  #       format.js
+  #     else
+  #       @posts = Post.all
+  #       format.html
+  #     end
+  #   end
+
+    respond_to do |format|
+      if !params[:buscador].nil?
+        if params[:buscador].blank?
+          @posts = Post.all
+        else
+          @posts = Post.where('period_of_day LIKE ?', "%#{params[:buscador]}%")
+        end
+        format.js
+      else
+        @posts = Post.all
+        format.html
+      end
+    end
   end 
 
   def new
@@ -20,9 +46,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
     @post.save
-    redirect_to posts_path, notice: "Relato agreagado con exito"
+
+    redirect_to tag_path(@post.tag_id), notice: "Relato enviado para aprobacion con exito! Si fuiste victima de #{post.tag.title}, lea más abajo"
   end
 
   def destroy
