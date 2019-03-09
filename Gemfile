@@ -30,6 +30,7 @@ gem 'devise'
 gem 'cancancan'
 gem 'faker'
 gem 'groupdate'
+gem 'omniauth-facebook'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'abouts/home'
   get 'tags/index'
   devise_for :users, controllers: {
-    sessions: 'users/sessions', registrations: 'users/registrations'
+    sessions: 'users/sessions', registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   get 'users/profile'
