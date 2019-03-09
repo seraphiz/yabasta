@@ -19,6 +19,7 @@ class Ability
     elsif user.author?
       can :read, :all
       can :create, Post
+      can :create, Comment
       # can :destroy, Comment, post: {user_id: user.id}
     else
       can :read, :all

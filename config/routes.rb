@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions', registrations: 'users/registrations'
   }
+
+  get 'users/profile'
+
   resources :posts do
     get :home, on: :collection
+    resources :comments, only: :create
   end 
 
   resources :tags, only: [:index, :show]

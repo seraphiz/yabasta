@@ -1,0 +1,17 @@
+<%= form_with(model:[post, comment]) do |f| %>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+    <br>
+    <%= f.label :anonymous %>
+    <%= f.check_box :anonymous %>
+    <br>
+    <%= f.submit %>
+<% end %>
+
+<ul id="post_comments_list">
+<% post.comments.each do |c| %>
+<li><%= c.content %><%= c.user.username %> - <%= c.created_at %></li>
+
+<% end %>
+
+</ul>

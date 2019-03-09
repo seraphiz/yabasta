@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_214127) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.boolean "anonymous", default: false
+    t.integer "anonymous"
     t.bigint "post_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false

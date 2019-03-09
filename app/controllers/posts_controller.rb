@@ -42,9 +42,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end 
 
   def create
+
     @post = Post.new(post_params)
     @post.user_id = current_user.id if current_user || nil
     if @post.user_id == nil
@@ -52,6 +54,7 @@ class PostsController < ApplicationController
     else 
     end 
     @post.save
+
 
     redirect_to tag_path(@post.tag_id), notice: "Relato enviado para aprobacion con exito! Si fuiste victima de #{@post.tag.title}, lea más abajo"
   end

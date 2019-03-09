@@ -1,4 +1,4 @@
-<h1>SHOW</h1>
+<h1>SHOW</h1><%= link_to 'Volver', posts_path %>
 
 <p><%= @post.tag.title %></p>
 <p><%= @post.content %></p>
@@ -14,4 +14,5 @@
 
 </p>
 <br>
-<%= link_to 'Volver', posts_path %>
+
+<%= render 'comments_posts', post:@post, comment: @comment %>
