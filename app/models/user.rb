@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook]
+  validates :username, presence: true, uniqueness: true, length: {maximum: 15}, format: { without: /\s/ }
+  validates :name, presence: true
+  validates :birthdate, presence: true
+  validates :genre, presence: true
+  
+  
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -15,7 +21,6 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name
-      user.birthdate = auth.info.birthdate
     end
   end
 end

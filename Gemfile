@@ -31,6 +31,9 @@ gem 'cancancan'
 gem 'faker'
 gem 'groupdate'
 gem 'omniauth-facebook'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

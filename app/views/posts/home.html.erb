@@ -6,11 +6,8 @@
 
 <%= button_to "Comparte tu relato", new_post_path, class: "btn btn-outline-warning my-2 my-sm-0", method: :get, remote: true  %>
 
-<form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <br>
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar dirección:</button>
-</form>
+<%= link_to "Vea el mapa", map_posts_path, class: "btn btn-outline-success my-2 my-sm-0" %>
+
 
 
 <%= render 'modal_posts' %>

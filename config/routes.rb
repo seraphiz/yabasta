@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'locations/find_address'
   get 'abouts/home'
   get 'tags/index'
   devise_for :users, controllers: {
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     get :home, on: :collection
+    get :map, on: :collection
     resources :comments, only: :create
   end 
 

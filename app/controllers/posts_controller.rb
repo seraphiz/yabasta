@@ -59,6 +59,9 @@ class PostsController < ApplicationController
     redirect_to tag_path(@post.tag_id), notice: "Relato enviado para aprobacion con exito! Si fuiste victima de #{@post.tag.title}, lea más abajo"
   end
 
+  def map
+  end 
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy

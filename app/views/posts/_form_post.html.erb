@@ -18,8 +18,21 @@
 <br>
 <%= f.text_area :content, {rows:"6", cols:"50"} %>
 <br>
-<%= f.label :address, 'Ubicación del suceso:' %>
-<%= f.text_field :address %>
+
+<div class="form-group">
+    <%= f.label :address %>
+    <div class="row">
+      <div class="col-md-10">
+        <%= f.text_field :address, class: 'form-control', id: "address_location"%>
+      </div>
+      <div class="col-md-2">
+        <%= link_to "#", class:"btn btn-primary", id: "get_location" do %>
+        <i class="fa fa-map-marker"> </i>
+      <% end %>
+      </div>
+    </div>
+ </div>
+
 <br>
 <% if user_signed_in? %>
     <%= f.label :anonymous, 'Relato anónimo:' %>
@@ -30,3 +43,32 @@
 <%= f.submit %>
 <% end %>
 
+<script>
+$("#get_location").on('click', function(event){ //lo que pasa cuando el boton es pinchado
+        event.preventDefault();
+    $(this).html('<i class="fa fa-spinner fa-spin"> </i>')
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(getAddress);
+    } else {
+        $('body').append("Geolocation is not supported by this browser.");
+    }
+})
+
+    function getAddress(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        $.ajax({
+            url: '<%= locations_find_address_path %>',
+            type: 'GET',
+            dataType: 'json',
+            data: {latitude: latitude, longitude: longitude}
+        })
+        .done(function(data) {
+        $('#address_location').val(data.address) //esto captura el valor de la funcion
+        })
+        .always(function(data){
+          $("#get_location").html('<i class="fa fa-map-marker"></i>') //esto cambia el boton
+        })
+    };
+
+</script>
