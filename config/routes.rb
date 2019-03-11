@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
 resources :users, only: :index do
   get :aproved_posts, on: :collection
+  get :posts_to_aprove, on: :collection
 end 
   resources :posts do
     get :home, on: :collection
