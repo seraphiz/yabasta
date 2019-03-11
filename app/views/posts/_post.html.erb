@@ -1,3 +1,5 @@
+
+<% if post.active == true %>
 <tr>
     <td><%= link_to post.tag.title, tag_path(post.tag_id) %></td>
      
@@ -11,5 +13,9 @@
     <td><%= post.date %></td>
     <td><%= post.period_of_day %></td>
     <td><%= post.created_at %></td>
+    <td><%= post.active %></td>
     <td><%= link_to 'Ver más', post_path(post) %></td>
 </tr>
+<% else %>
+    
+<% end %>

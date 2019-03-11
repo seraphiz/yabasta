@@ -34,7 +34,7 @@
           
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Mi perfil</a>
+          <a class="dropdown-item" href="<%= users_path %>">Mi perfil</a>
           <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>        
         </div>
       </li>

@@ -21,17 +21,6 @@ RELATOS
 </table>
 
 <script>
-  $('#tipocrimen').keyup(function () {
-    var searchQuery = $('#tipocrimen').val();
-    $.ajax({
-      type: "GET",
-      url: "<%= posts_path %>",
-      data: { tipocrimen: searchQuery }
-    });
-  });
-</script>
-
-<script>
   $('#buscador').keyup(function () {
     var searchQuery = $('#buscador').val();
     $.ajax({
