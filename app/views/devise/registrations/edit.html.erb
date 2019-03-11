@@ -30,16 +30,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :birthdate %><br />
-    <%= f.date_field :birthdate, min: "1919-01-01", max: @date_today %>
-  </div>
-
-  <div class="field">
-    <%= f.label :genre %><br />
-    <%= f.select :genre, options_for_select(["Masculino", "Femenino", "Otros"]), prompt: "Seleccione un genero" %>
-  </div>
-
-  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email" %>
   </div>
