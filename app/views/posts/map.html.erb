@@ -1,26 +1,45 @@
-<div style='width: 800px;'>
- <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
+
+<div id="map_div" style="height: 600px;"></div>
 
 <script>
-handler = Gmaps.build('Google');
-handler.buildMap({
- provider: {
- center: new google.maps.LatLng({lat: -37, lng: -72}),
- zoom: 5
- },
- internal: {
- id: 'map'
- }
- },
- function(){
- markers = handler.addMarkers(<%=raw @hash.to_json %>);
- }
-);
-//  google.maps.event.addListener(handler.getMap(), "center_changed", function(e){
-//  var new_center = handler.getMap().getCenter();
-//  var lat = new_center.lat();
-//  var lng = new_center.lng();
-//  console.log(lat, lng)
-//  });
+
+var map = new google.maps.Map(document.getElementById("map_div"), {
+  center: new google.maps.LatLng(-33.4372, -70.6506),
+  zoom: 14,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+google.maps.event.addDomListener(window, "load", function () {
+    var infoWindow = new google.maps.InfoWindow();
+    function createMarker(options, html) {
+    var marker = new google.maps.Marker(options);
+    if (html) {
+      google.maps.event.addListener(marker, "click", function () {
+        infoWindow.setContent(html);
+        infoWindow.open(options.map, this);
+      });
+    }
+    return marker;
+  }
+  var marker0 = createMarker({
+    position: new google.maps.LatLng(33.808678, -117.918921),
+    map: map,
+    icon: "https://1.bp.blogspot.com/_GZzKwf6g1o8/S6xwK6CSghI/AAAAAAAAA98/_iA3r4Ehclk/s1600/marker-green.png"
+  }, "<h1>Marker 0</h1><p>This is the home marker.</p>");
+  var marker1 = createMarker({
+    position: new google.maps.LatLng(33.818038, -117.928492),
+    map: map
+  }, "<h1>Marker 1</h1><p>This is marker 1</p>");
+
+  var marker2 = createMarker({
+    position: new google.maps.LatLng(33.803333, -117.915278),
+    map: map
+  }, "<h1>Marker 2</h1><p>This is marker 2</p>");
+});
+window.onresize = function() {
+  var currCenter = map.getCenter();
+  google.maps.event.trigger(map, 'resize');
+  map.setCenter(currCenter);
+};
+
 </script>
