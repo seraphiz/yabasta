@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions', registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-resources :users, only: :index
-
+resources :users, only: :index do
+  get :aproved_posts, on: :collection
+end 
   resources :posts do
     get :home, on: :collection
     get :map, on: :collection
