@@ -62,6 +62,19 @@ class PostsController < ApplicationController
   def map
   end 
 
+  def update
+    @post = Post.find(params[:id])
+    if @post.anonymous == false
+      @post.anonymous = true
+    else
+      @post.anonymous = false
+    end 
+    @post.save
+  end 
+  respond_to do |format|
+    format.js {  }
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy

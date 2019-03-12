@@ -26,7 +26,7 @@
         </tr>
     </thead>
     <tbody>
-    <% @posts.each do |post| %>
+    <% @aproved_posts.each do |post| %>
       <tr id="<%= post.id %>">
         <td><%= link_to post.tag.title, tag_path(post.tag_id) %></td>
      

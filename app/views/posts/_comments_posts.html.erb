@@ -10,7 +10,7 @@
 
 <ul id="post_comments_list">
 <% post.comments.each do |c| %>
-<li><%= c.content %><%= c.user.username %> - <%= c.created_at %></li>
+<li><%= c.content %> - <%= c.user.username %> - <%= c.created_at %></li>
 
 <% end %>
 
