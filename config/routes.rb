@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'abouts/home'
   get 'tags/index', to: 'tags#index'
   devise_for :users, controllers: {
-    sessions: 'users/sessions', registrations: 'users/registrations', omniauth_callbacks: 'users/omniauth_callbacks'
+    sessions: 'users/sessions', 
+    registrations: 'users/registrations', 
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
 resources :users, only: :index do

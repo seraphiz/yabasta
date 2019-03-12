@@ -22,13 +22,11 @@
             <th>Author</th>
             <th>Fecha</th>
             <th>Periodo del dia</th>
-            <th>Hora publicación</th>
             <th>Active?</th>
         </tr>
     </thead>
     <tbody id="lista">
     <% @posts.each do |post| %>
-        <tr>
        <tr>
     <td><%= link_to post.tag.title, tag_path(post.tag_id) %></td>
      
@@ -41,11 +39,10 @@
     </td>
     <td><%= post.date %></td>
     <td><%= post.period_of_day %></td>
-    <td><%= post.created_at %></td>
     <td><%= post.active %></td>
     <td><%= link_to 'Ver más', post_path(post) %></td>
+    <td><%= link_to 'Borrar', post, method: :delete, data: { confirm: '¡Puedes dejar tu relato anonimo! ¿Seguro quieres borrar el relato?', remote: true } %></td>
 </tr>
-       </tr>
        
        <% end %>
     </tbody>
