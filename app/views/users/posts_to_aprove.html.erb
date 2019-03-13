@@ -13,7 +13,7 @@
             <% if current_user.moderator? %>
                 <button type="button" class="btn btn-outline-success btn-lg"><%= link_to 'Para aprobacion', moderator_users_path %></button>
             <% end %>            
-            <button type="button" class="btn btn-outline-success btn-lg">Borrar cuenta</button>
+            <button type="button" class="btn btn-outline-success btn-lg"><%= link_to 'Borrar cuenta', account_users_path %></button>
         </div>
       </ul>
     </div>

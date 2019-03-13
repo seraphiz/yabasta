@@ -12,6 +12,9 @@ resources :users, only: :index do
   get :aproved_posts, on: :collection
   get :posts_to_aprove, on: :collection
   get :moderator, on: :collection
+  get :account, on: :collection
+  patch :desactive, on: :member
+  delete :destroy, on: :member
 end 
   resources :posts do
     get :home, on: :collection
