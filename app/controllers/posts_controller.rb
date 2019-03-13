@@ -69,15 +69,8 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.anonymous == false
-      @post.anonymous = true
-    else
-      @post.anonymous = false
-    end 
-    @post.save
-    respond_to do |format|
-      format.js {  }
-    end
+    @post.update(anonymous: !@post.anonymous)
+    respond_to :js
   end
 
   def moderator_aprove

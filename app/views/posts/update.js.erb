@@ -1,1 +1,1 @@
-$("#cambio").replaceWith("<%= @post.user.username %>")
+$("#<%= @post.id %>").replaceWith("<%= j render 'users/user_post', post: @post %>");
