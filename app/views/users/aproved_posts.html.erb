@@ -20,26 +20,26 @@
         <tr>
             <th>Title</th>
             <th>Author</th>
-            <th>Fecha</th>
-            <th>Periodo del dia</th>
+            <th>Fecha creación</th>
             <th>Active?</th>
+            <th>Anonymous</th>
         </tr>
     </thead>
     <tbody>
-    <% @aproved_posts.each do |post| %>
+    <% @posts.each do |post| %>
       <tr id="<%= post.id %>">
         <td><%= link_to post.tag.title, tag_path(post.tag_id) %></td>
      
-        <td>
-            <% if post.anonymous == false %>
-                <%= post.user.username %>
-            <% else %>
+        <td id="cambio">
+            <% if post.anonymous == true %>
                 Anonimo
+            <% else %>
+                <%= post.user.username %>
             <% end %>
         </td>
-        <td><%= post.date %></td>
-        <td><%= post.period_of_day %></td>
+        <td><%= post.created_at %></td>
         <td><%= post.active %></td>
+        <td><%= link_to 'Anonimo', post, method: :patch, data: { confirm: 'Tu relato pasara a ser anonimo, estas segura(o)?', remote: true } %></td>
         <td><%= link_to 'Ver más', post_path(post) %></td>
         <td><%= link_to 'Borrar', post, method: :delete, data: { confirm: '¡Puedes dejar tu Post anonimo! ¿ Seguro quieres borrar el post?', remote: true } %></td>
       </tr>

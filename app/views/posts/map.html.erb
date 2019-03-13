@@ -38,6 +38,8 @@ var map = new google.maps.Map(document.getElementById("map_div"), {
     map.setZoom(15);
   });
 
+  
+
 window.onresize = function() {
   var currCenter = map.getCenter();
   google.maps.event.trigger(map, 'resize');

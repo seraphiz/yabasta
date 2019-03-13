@@ -60,6 +60,11 @@ class PostsController < ApplicationController
   end
 
   def map
+    @posts = Post.all
+    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
+      marker.lat post.latitude
+      marker.lng post.longitude
+    end
   end 
 
   def update
@@ -70,10 +75,11 @@ class PostsController < ApplicationController
       @post.anonymous = false
     end 
     @post.save
+    respond_to do |format|
+      format.js {  }
+    end
   end 
-  respond_to do |format|
-    format.js {  }
-  end
+  
 
   def destroy
     @post = Post.find(params[:id])
