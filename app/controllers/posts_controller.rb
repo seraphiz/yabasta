@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: %i[update moderator_aprove destroy]
+
+
   def home
   end
 

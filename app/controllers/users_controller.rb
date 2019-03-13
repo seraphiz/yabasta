@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: %i[aproved_posts posts_to_aprove moderador]
+
   def index
   end
   def aproved_posts
