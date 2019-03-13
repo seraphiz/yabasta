@@ -1,1 +1,3 @@
-$('#post_comments_list').prepend('<li><%= @comment.content %> - <%= @comment.user.username %> - <%= @comment.created_at %></li>')
+$('#post_comments_list').append('<li><%= @comment.content %> - <%= @comment.user.username %> - <%= @comment.created_at %> - <%= link_to 'X', post_comment_path(@comment.post_id, @comment.id), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?', remote: true } %></li>')
+
+$('#field').val('');

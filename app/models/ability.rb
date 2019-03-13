@@ -13,16 +13,24 @@ class Ability
     #
 
 
-    user ||= User.new(role: 1) # guest user (not logged in)
+    user ||= User.new(role: 0) # guest user (not logged in)
     if user.moderator?
       can :manage, :all
+      can :read, :all
+      can :home, Post
+      can :map, Post
+      can :moderator_aprove, Post
     elsif user.author?
       can :read, :all
-      can :create, Post
-      can :create, Comment
-      # can :destroy, Comment, post: {user_id: user.id}
+      can :home, Post
+      can :map, Post
+      can :create, [Post, Comment]
+      can :update, Post, user_id: user.id # can :destroy, Comment, post: {user_id: user.id}
+      can :destroy, [Post, Comment], user_id: user.id
     else
       can :read, :all
+      can :home, Post
+      can :map, Post
       can :create, Post
     end
 

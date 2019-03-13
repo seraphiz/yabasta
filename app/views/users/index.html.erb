@@ -9,7 +9,9 @@
             <button type="button" class="btn btn-outline-success btn-lg"><%= link_to 'Editar perfil', edit_user_registration_path %></button>
             <button type="button" class="btn btn-outline-success btn-lg"><%= link_to 'Relatos aprobados', aproved_posts_users_path %></button>
             <button type="button" class="btn btn-outline-success btn-lg"><%= link_to 'Relatos por aprobar', posts_to_aprove_users_path %></button>
-            <button type="button" class="btn btn-outline-success btn-lg"><%= link_to 'Para aprobacion', moderator_users_path %></button>
+            <% if current_user.moderator? %>
+                <button type="button" class="btn btn-outline-success btn-lg"><%= link_to 'Para aprobacion', moderator_users_path %></button>
+            <% end %>
             <button type="button" class="btn btn-outline-success btn-lg">Borrar cuenta</button>
         </div>
       </ul>

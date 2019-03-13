@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
 <%= form_with(model:[post, comment]) do |f| %>
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.text_field :content, id: "field" %>
     <br>
     <%= f.label :anonymous %>
     <%= f.check_box :anonymous %>
@@ -12,16 +12,20 @@
 <% end %>
 
 
-<ul id="post_comments_list">
+<ul id="post_comments_list" >
 <% post.comments.each do |c| %>
-<li><%= c.content %> - 
+<li id="<%= c.id %>"><%= c.content %> - 
 
 <% if c.anonymous == 1 %>
 Anonimo - 
 <% else %>
 <%= c.user.username %> - 
 <% end %>
-<%= c.created_at %></li>
+<%= c.created_at %> - 
+<% if can? :destroy, c %>
+<%= link_to 'X', post_comment_path(@post, c), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?', remote: true } %> </li>
+
+<% end %>
 
 <% end %>
 

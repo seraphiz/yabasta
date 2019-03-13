@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[update moderator_aprove destroy]
+  load_and_authorize_resource
 
 
   def home
@@ -57,8 +58,6 @@ class PostsController < ApplicationController
     else 
     end 
     @post.save
-
-
     redirect_to tag_path(@post.tag_id), notice: "Relato enviado para aprobacion con exito! Si fuiste victima de #{@post.tag.title}, lea más abajo"
   end
 

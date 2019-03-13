@@ -17,7 +17,7 @@ end
     get :home, on: :collection
     get :map, on: :collection
     patch :moderator_aprove, on: :member
-    resources :comments, only: :create
+    resources :comments, only: [:create, :destroy]
   end 
 
   resources :tags, only: [:index, :show]
