@@ -9,4 +9,8 @@ class UsersController < ApplicationController
     @posts = current_user.posts.where(active: false)
   end 
 
+  def moderator
+    @posts = Post.where(active: false)
+  end
+
 end

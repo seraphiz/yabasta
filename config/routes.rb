@@ -11,10 +11,12 @@ Rails.application.routes.draw do
 resources :users, only: :index do
   get :aproved_posts, on: :collection
   get :posts_to_aprove, on: :collection
+  get :moderator, on: :collection
 end 
   resources :posts do
     get :home, on: :collection
     get :map, on: :collection
+    patch :moderator_aprove, on: :member
     resources :comments, only: :create
   end 
 

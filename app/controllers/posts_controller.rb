@@ -78,6 +78,15 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.js {  }
     end
+  end
+
+  def moderator_aprove
+    @post = Post.find(params[:id])
+    @post.active = true
+    @post.save
+    respond_to do |format|
+      format.js {  }
+    end
   end 
   
 
