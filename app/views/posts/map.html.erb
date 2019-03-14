@@ -19,6 +19,7 @@ var map = new google.maps.Map(document.getElementById("map_div"), {
     draggable: true,
   });
 
+
   var searchBox = new google.maps.places.SearchBox(document.getElementById('mapsearch'));
 
   google.maps.event.addListener(searchBox, 'places_changed', function(){
@@ -38,6 +39,22 @@ var map = new google.maps.Map(document.getElementById("map_div"), {
     map.setZoom(15);
   });
 
+  var json = <%=raw @hash.to_json %>
+
+ // Looping through all the entries from the JSON data
+  for(var i = 0; i < json.length; i++) {
+    
+    // Current object
+    var obj = json[i];
+
+    // Adding a new marker for the object
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(obj.latitude,obj.longitude),
+      map: map,
+      title: obj.title // this works, giving the marker a title with the correct title
+    });
+ 
+  } // end loop
 window.onresize = function() {
   var currCenter = map.getCenter();
   google.maps.event.trigger(map, 'resize');

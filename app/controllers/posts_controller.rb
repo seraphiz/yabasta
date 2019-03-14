@@ -42,10 +42,10 @@ class PostsController < ApplicationController
 
   def map
     @posts = Post.all
-    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
-      marker.lat post.latitude
-      marker.lng post.longitude
-    end
+    @hash = []
+    @posts.each do |p|
+      @hash.push({ latitude: p.latitude, longitude: p.longitude, id: p.id, title: p.tag.title })
+    end 
   end 
 
   def update
