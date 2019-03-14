@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def desactive
-    @user = User.find(params[:id])
+    @user = current_user
     @user.comments.each do |c|
       c.anonymous = 1
     end 
@@ -25,8 +25,8 @@ class UsersController < ApplicationController
     end
     @user.active = false
     @user.save
-
-    redirect_to destroy_user_session_path, method: :delete, notice: "Cuenta desactivada exitosamente"
+    reset_session
+    redirect_to root_path, notice: "Cuenta desactivada exitosamente"
   end 
   
   def destroy
