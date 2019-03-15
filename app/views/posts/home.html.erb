@@ -1,3 +1,6 @@
+<div id="map_div" style="height: 520px;"></div>.
+
+<div class="container">
 <h1>¡Ya BASTA!</h1>
 <p>Aca un mapa</p>
 
@@ -11,3 +14,36 @@
 
 
 <%= render 'modal_posts' %>
+
+</div>
+
+<script>
+
+var map = new google.maps.Map(document.getElementById("map_div"), {
+  center: new google.maps.LatLng(-33.4372, -70.6506),
+  zoom: 14,
+  disableDefaultUI: true,
+  draggable: false, 
+  zoomControl: false, 
+  scrollwheel: false, 
+  disableDoubleClickZoom: true,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+  var marker = new google.maps.Marker({
+    position:{
+      lat: -33.4372,
+      lng: -70.6506
+    },
+    map: map,
+    draggable: true,
+  });
+  
+  window.onresize = function() {
+  var currCenter = map.getCenter();
+  google.maps.event.trigger(map, 'resize');
+  map.setCenter(currCenter);
+};
+
+
+</script>
