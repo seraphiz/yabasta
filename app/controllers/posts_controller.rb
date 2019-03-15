@@ -37,10 +37,6 @@ class PostsController < ApplicationController
     else 
     end 
     @post.save
-<<<<<<< HEAD
-=======
-
->>>>>>> development
     redirect_to tag_path(@post.tag_id), notice: "Relato enviado para aprobacion con exito! Si fuiste victima de #{@post.tag.title}, lea más abajo"
   end
 

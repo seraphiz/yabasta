@@ -1,26 +1,51 @@
+<p>Antes de compartir tu relato, lea abajo:</p>
+<ul>
+<% if user_signed_in? %>
+<li>Tu relato puede ser anónimo, solo debes recordar seleccionar la opción antes de enviar,</li>
+<% else %>
+<% end %>
+<li>Los campos con (*) son obligatorios,</li>
+<li>Al describir tu relato, evite utilizar nombres proprios de personas, esto hace con que tu relato sea más dificil de ser aprobado,</li>
+<li>Los relatos pasaran por la aprobación del moderador.</li>
+</ul>
+
 <%= form_with(model: post) do |f| %>
-<%= f.label :tag_id, 'Tipo de crimen de odio:' %>
-<%= f.select :tag_id, @title_tag_select, prompt: "Seleccione un tipo de crimen de odio" %>
-<br>
-<%= f.label :birth, 'Fecha del suceso:' %>
+<div class="row">
+<div class="col-12 col-md-6 col-lg-6">
+<div class="form-group">
+<%= f.label :tag_id, 'Tipo de crimen de odio*:' %>
+<%= f.select :tag_id, @title_tag_select, prompt: "Seleccione un tipo de crimen de odio", class: 'form-control' %>
+</div>
+<div class="form-group">
+<%= f.label :birth, 'Fecha del suceso*:' %>
 <%= f.date_field :date, min: "2017-01-01", max: @date_today %>
-<br>
-<%= f.label :period_of_day, 'Periodo del día:' %>
+</div>
+<div class="form-group">
+<%= f.label :period_of_day, 'Periodo del día*:' %>
 <%= f.select :period_of_day, options_for_select(@period_for_select), prompt: "Seleccione un periodo"%>
-<br>
-<%= f.label :age, 'Edad aproximada:' %>
+</div>
+<div class="form-group">
+<%= f.label :age, 'Edad aproximada de la victima:' %>
 <%= f.number_field :age, {min:"0", max:"100"} %>
+</div>
+</div>
+
+<div class="col-12 col-md-6 col-lg-6">
+<div class="form-group">
+<%= f.label :name, 'Nombre de la victima:' %>
+<%= f.text_field :name, class: 'form-control' %>
+</div>
+<div class="form-group">
+<%= f.label :content, 'Describe tu relato*:' %>
 <br>
-<%= f.label :name, 'Nombre(Opcional):' %>
-<%= f.text_field :name %>
-<br>
-<%= f.label :content, 'Describe tu relato:' %>
-<br>
-<%= f.text_area :content, {rows:"6", cols:"50"} %>
-<br>
+<%= f.text_area :content, class: "comment-text-area form-control"  %>
+</div>
+</div>
+</div>
+
 
 <div class="form-group">
-    <%= f.label :address %>
+    <%= f.label :address, 'Dirección del ocurrido(*):' %>
     <div class="row">
       <div class="col-md-10">
         <%= f.text_field :address, class: 'form-control', id: "address_location"%>
@@ -33,22 +58,27 @@
     </div>
  </div>
 <div class="container"><div id="map" style='width: 100%; height: 400px;'></div></div>
-  
-
-<br>
-<% if user_signed_in? %>
-    <%= f.label :anonymous, 'Relato anónimo:' %>
-    <%= f.check_box :anonymous %>
-<% else %>
-<% end %>
-<br>
-<%= f.submit %>
+  <br>
+<div class="row center">
+  <div class="col-12 col-md-12 col-lg-12">
+    <div class="form-check">
+      <% if user_signed_in? %>
+          <%= f.check_box :anonymous, class: 'form-check-input' %>
+          <%= f.label :anonymous, 'Relato anónimo', class: 'form-check-label' %>
+      <% else %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-12 col-md-12 col-lg-12">
+    <%= f.submit 'Crear relato', class: "btn btn-success" %>
+  </div>
 <% end %>
 <script>
 
 var map = new google.maps.Map(document.getElementById("map"), {
   center: new google.maps.LatLng(-33.4372, -70.6506),
   zoom: 14,
+  streetViewControl: false,
   mapTypeId: google.maps.MapTypeId.ROADMAP
 });
 
@@ -56,6 +86,7 @@ var map = new google.maps.Map(document.getElementById("map"), {
     position:{
       lat: -33.4372,
       lng: -70.6506
+      
     },
     map: map,
     draggable: true,

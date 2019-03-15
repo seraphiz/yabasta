@@ -1,0 +1,51 @@
+/* home */
+#map_div {
+    height: 100%;
+    z-index: 0;
+}
+
+.home1 {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+}
+
+.home2 {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    z-index: 5;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* home */
+
+/* form */
+.comment-text-area {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    width: 100%;
+}
+
+.center, .modal-title{
+    text-align: center;
+}
+/* form */
+
+/* map */
+#mapsearch {
+    position: absolute;
+    top: 10%;
+    left: 38%;
+    width: 30%;
+    z-index: 5;
+    text-align: center
+}
+/* map */
