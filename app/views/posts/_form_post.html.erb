@@ -32,6 +32,8 @@
       </div>
     </div>
  </div>
+<div class="container"><div id="map" style='width: 100%; height: 400px;'></div></div>
+  
 
 <br>
 <% if user_signed_in? %>
@@ -42,6 +44,46 @@
 <br>
 <%= f.submit %>
 <% end %>
+<script>
+
+var map = new google.maps.Map(document.getElementById("map"), {
+  center: new google.maps.LatLng(-33.4372, -70.6506),
+  zoom: 14,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+  var marker = new google.maps.Marker({
+    position:{
+      lat: -33.4372,
+      lng: -70.6506
+    },
+    map: map,
+    draggable: true,
+  });
+
+
+  var searchBox = new google.maps.places.SearchBox(document.getElementById('address_location'));
+
+  google.maps.event.addListener(searchBox, 'places_changed', function(){
+
+    var places = searchBox.getPlaces();
+
+    var bounds = new google.maps.LatLngBounds();
+    var i, place;
+
+    for(i=0; place=places[i];i++){
+      
+      // console.log(place.geometry.location)
+      bounds.extend(place.geometry.location);
+      marker.setPosition(place.geometry.location);
+    }
+    map.fitBounds(bounds);
+    map.setZoom(15);
+  });
+
+
+
+</script>
 
 <script>
 $("#get_location").on('click', function(event){ //lo que pasa cuando el boton es pinchado

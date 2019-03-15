@@ -14,5 +14,33 @@
 
 </p>
 <br>
+<div style='width: 800px;'>
+ <div id="map" style='width: 400px; height: 400px;'></div>
+</div>
+<br>
 
 <%= render 'comments_posts', post:@post, comment: @comment %>
+
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({
+ provider: {
+ center: new google.maps.LatLng({lat: <%= @post.latitude %>, lng: <%= @post.longitude %>}),
+ zoom: 5,
+ disableDefaultUI: true,
+ draggable: false, 
+ zoomControl: false, 
+ scrollwheel: false, 
+ disableDoubleClickZoom: true
+ },
+ internal: {
+ id: 'map'
+ }
+ },
+ function(){
+ markers = handler.addMarkers(<%=raw @hash.to_json %>);
+ }
+);
+handler.getMap().setZoom(16)
+</script>
+

@@ -1,18 +1,18 @@
+<div class="container">
+
 <h1>
 RELATOS
 </h1>
-<%# <label for="">Buscar:</label>
-<input type="text" id="tipocrimen"> %>
-<label for="">Buscar por periodo:</label>
-<input type="text" id="buscador">
 
-<table class="table table-hover">
+<table id="my-table" class="table table-hover display">
     <thead>
         <tr>
             <th>Title</th>
+            <th>Publicación</th>
             <th>Author</th>
             <th>Fecha</th>
             <th>Periodo del dia</th>
+            <th></th>
         </tr>
     </thead>
     <tbody id="lista">
@@ -20,13 +20,11 @@ RELATOS
     </tbody>
 </table>
 
+</div>
 <script>
-  $('#buscador').keyup(function () {
-    var searchQuery = $('#buscador').val();
-    $.ajax({
-      type: "GET",
-      url: "<%= posts_path %>",
-      data: { buscador: searchQuery }
+$(document).on("turbolinks:load",function() {
+    $('#my-table').dataTable({
+      
     });
-  });
+} );
 </script>

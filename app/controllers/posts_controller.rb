@@ -7,33 +7,7 @@ class PostsController < ApplicationController
   end
 
   def index
-  #   respond_to do |format|
-  #     if !params[:tipocrimen].nil?
-  #       if params[:tipocrimen].blank?
-  #         @posts = Post.all
-  #       else
-  #        @tags = Tag.where('title LIKE ?', "%#{params[:tipocrimen]}%")
-  #       end
-  #       format.js
-  #     else
-  #       @posts = Post.all
-  #       format.html
-  #     end
-  #   end
-
-    respond_to do |format|
-      if !params[:buscador].nil?
-        if params[:buscador].blank?
-          @posts = Post.all
-        else
-          @posts = Post.where('period_of_day LIKE ?', "%#{params[:buscador]}%")
-        end
-        format.js
-      else
         @posts = Post.order("id DESC")
-        format.html
-      end
-    end
   end 
 
   def new
@@ -47,6 +21,11 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+
+    @hash = Gmaps4rails.build_markers(@post) do |post, marker|
+      marker.lat post.latitude
+      marker.lng post.longitude
+     end
   end 
 
   def create
@@ -58,15 +37,19 @@ class PostsController < ApplicationController
     else 
     end 
     @post.save
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
     redirect_to tag_path(@post.tag_id), notice: "Relato enviado para aprobacion con exito! Si fuiste victima de #{@post.tag.title}, lea más abajo"
   end
 
   def map
     @posts = Post.all
-    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
-      marker.lat post.latitude
-      marker.lng post.longitude
-    end
+    @hash = []
+    @posts.each do |p|
+      @hash.push({ latitude: p.latitude, longitude: p.longitude, id: p.id, title: p.tag.title })
+    end 
   end 
 
   def update
