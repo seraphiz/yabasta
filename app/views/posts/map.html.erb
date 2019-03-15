@@ -52,12 +52,16 @@ var map = new google.maps.Map(document.getElementById("map_div"), {
     var marker = new google.maps.Marker({
       position: new google.maps.LatLng(obj.latitude,obj.longitude),
       map: map,
-      title: obj.title // this works, giving the marker a title with the correct title
+      title: obj.title, // this works, giving the marker a title with the correct title
+      id: obj.id
     });
     google.maps.event.addListener(marker, 'click', (function(marker) {
     return function() {
-    /*Bootstrap Modal Pop Up Open Code*/
-    $("#exampleModalCenter").modal('show');
+      $.ajax({
+        type: "GET",
+        url: "/posts/"+marker.id+"/info"
+      });
+    
 }
 })(marker));
  
@@ -72,19 +76,4 @@ window.onresize = function() {
 
 </script>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'map' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/modal_info' %>

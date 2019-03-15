@@ -21,6 +21,7 @@ end
     get :map, on: :collection
     patch :moderator_aprove, on: :member
     resources :comments, only: [:create, :destroy]
+    get :info, on: :member
   end 
 
   resources :tags, only: [:index, :show]

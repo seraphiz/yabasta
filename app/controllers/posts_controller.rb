@@ -46,7 +46,12 @@ class PostsController < ApplicationController
     @posts.each do |p|
       @hash.push({ latitude: p.latitude, longitude: p.longitude, id: p.id, title: p.tag.title })
     end 
-  end 
+  end
+
+  def info
+    @post = Post.find(params[:id])
+    respond_to :js
+  end
 
   def update
     @post = Post.find(params[:id])

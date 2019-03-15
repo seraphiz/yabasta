@@ -29,9 +29,7 @@ class Ability
       can :destroy, [Post, Comment], user_id: user.id
     else
       can :read, :all
-      can :home, Post
-      can :map, Post
-      can :create, Post
+      can [:home, :map, :create, :info], Post
     end
 
 

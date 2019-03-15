@@ -3,6 +3,11 @@
 
 <ol>
 <% @tags.each do |tag| %>
-<li><%= link_to tag.title, tag %></li>
+<div class="card" style="width: 10rem;">
+  <img src="https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= link_to tag.title, tag %></h5>
+  </div>
+</div>
+
 <% end %>
-</ol>
