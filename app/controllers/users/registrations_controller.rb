@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    @grupo_social_select = SocialGroup.pluck(:name, :id)
+  @date_today = Date.today
     super
   end
 

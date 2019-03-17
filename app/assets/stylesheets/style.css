@@ -2,6 +2,10 @@ h1 {
     text-align: center
 }
 
+.text-center {
+    text-align: center
+}
+
 /* home */
 #map_div {
     height: 100%;
@@ -9,16 +13,36 @@ h1 {
 }
 
 .home1 {
-    position: absolute;
+    position: fixed;
     top: 50%;
     z-index: 5;
 }
 
 .home2 {
-    position: absolute;
+    position: fixed;
     top: 45%;
     left: 50%;
     z-index: 5;
+}
+
+.btn1 {
+      color: #0099CC; /* Text color */
+      background: rgb(221, 179, 179); /* Remove background color */
+      border: 2px solid #0099CC; /* Border thickness, line style, and color */
+      border-radius: 70px; /* Adds curve to border corners */
+      text-decoration: none;
+      text-transform: uppercase; /* Make letters uppercase */
+      border: none;
+      color: rgb(0, 0, 0);
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      cursor: pointer;
 }
 
 body{
@@ -26,6 +50,7 @@ body{
     margin: 0;
     padding: 0;
 }
+
 
 /* home */
 
@@ -46,9 +71,9 @@ body{
 /* map */
 #mapsearch {
     position: absolute;
-    top: 10%;
-    left: 38%;
-    width: 30%;
+    top: 13%;
+    left: 33%;
+    width: 35%;
     z-index: 5;
     text-align: center
 }
@@ -65,8 +90,73 @@ body{
 /* index */
 #my-table {
     border-collapse: collapse;
-    background-color: #8E72E6;
+    background-color: rgba(99, 177, 223, 0.692);
     border-radius: 1em;
     overflow: hidden;
 }
 /* index */
+
+/* index.tag */
+.card-float {
+    float:left;
+    margin: 10px;
+    text-align: center;
+}
+
+
+.card-title {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.responsive {
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+
+}
+
+.center-cont {
+    text-align: center;
+  }
+/* index.tag */
+
+/* center loguin */
+.center-login {
+    text-align: center;
+    margin-top: 10px;
+  }
+/* center loguin */
+
+/* show */
+.boder-comments {
+    border: 1px dashed gray;
+    padding: 10px;
+}
+
+.hr-all {
+    width: 95%;
+}
+.showh2, .showp, .showp1{
+    text-align: center
+}
+.showp1, .author-post{
+    opacity: 0.5;
+}
+.author-post {
+    text-align: right;
+    margin-right: 20px;
+}
+#map_show {
+    width: 90%;
+    height: 400px;
+    text-align: center;
+    margin: 0 auto 0 auto;
+
+}
+.buton-aling {
+    margin-top: 5px;
+    position: absolute;
+    right: 4%;
+}
+/* show */

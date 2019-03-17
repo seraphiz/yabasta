@@ -19,15 +19,15 @@
     <div class="col-12 col-md-9 col-lg-9">
 
     <h3>Quieres salir?</h3>
-    <p>Tus relatos sirven, si quieres salir, podemos dejar todas tus publicaciones en Aninima(o)</p>
-    <p>Si deseas regresar, solo debe conectarse por el iniio de sesión. Tus relatos y comentarios seguiran anonimos</p>
+    <p>Tus relatos sirven y ayudan a mas personas, si quieres salir, podemos dejar todas tus publicaciones en anónimo</p>
+    <p>Si deseas regresar, solo debe conectarse por el inicio de sesión. Tus relatos y comentarios seguiran anonimos</p>
     <%= button_to 'Desactivar', desactive_user_path(current_user.id), method: :patch, data: { confirm: "Para volver, solo debes iniciar seccion" } %>
     <br>
 
     <h3>Borrar mi cuenta</h3>
 
 <p>Tus relatos son importantes, ya pensanste en desactivar la cuenta? 
-<%= link_to "Borrar mi cuenta", user_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %>
+<%= button_to "Borrar mi cuenta", user_path(current_user), data: { confirm: "¿Estas seguro?" }, method: :delete %>
 </p>
 
     </div>

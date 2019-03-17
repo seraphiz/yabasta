@@ -1,26 +1,45 @@
-<h1>SHOW</h1><%= link_to 'Volver', posts_path %>
+<br>
+<div class="container">
+<div class="row no-gutters">
+<div class="col-12 col-sm-6 col-md-8">
+<h2 class="showh2"><%= @post.tag.title %></h2>
+<p class="showp ">Data del suceso: <%= @post.date.strftime('%d/%m/%Y') %> | Periodo del dia: <%= @post.period_of_day %></p>
+<hr class="hr-all">
+<p class="showp1">Victima:
+<% if @post.name.present? %>
+        <%= @post.name %>
+    <% else %>
+        No identificada
+    <% end %>, <%= @post.age %> años aproximadamente.
 
-<p><%= @post.tag.title %></p>
-<p><%= @post.content %></p>
-<p><%= @post.date %></p>
-<p><%= @post.period_of_day %></p>
-<p><%= @post.address %></p>
-<p>
+</p>
+<p class="showp">
+
+<%= @post.content %></p>
+<p class="author-post">
     <% if @post.anonymous == false %>
         <%= @post.user.username %>
     <% else %>
-        Anonimo
+        Anónimo
     <% end %>
 
 </p>
+<hr class="hr-all">
+
+<p class="showp">Dirección del ocurrido: <%= @post.address %></p>
+
+ <div id="map_show"></div>
+</div>
+
+
 <br>
-<div style='width: 800px;'>
- <div id="map" style='width: 400px; height: 400px;'></div>
+<div class="col-6 col-md-6 col-lg-4 boder-comments">
+<div class="container">
+<%= render 'comments_posts', post:@post, comment: @comment %>
+</div>
+</div>
 </div>
 <br>
-
-<%= render 'comments_posts', post:@post, comment: @comment %>
-
 <script>
 handler = Gmaps.build('Google');
 handler.buildMap({
@@ -34,13 +53,14 @@ handler.buildMap({
  disableDoubleClickZoom: true
  },
  internal: {
- id: 'map'
+ id: 'map_show'
  }
  },
  function(){
  markers = handler.addMarkers(<%=raw @hash.to_json %>);
  }
 );
+
 handler.getMap().setZoom(16)
 </script>
 

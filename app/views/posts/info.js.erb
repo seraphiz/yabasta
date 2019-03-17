@@ -1,5 +1,5 @@
 $('#modalTitle').html("<%= @post.tag.title %>");
-$('.modal-body-center').html("<p> Fecha del suceso: <%= @post.date %> - Periodo del día: <%= @post.period_of_day %></p><p>Dirección del suceso: <%= @post.address %></p><p>Autor del relato: <% if @post.anonymous == false %><%= @post.user.username %><% else %>Anonimo<% end %></p>");
+$('.modal-body-center').html("<p> Fecha del suceso: <%= @post.date.strftime('%d/%m/%Y') %> - Periodo del día: <%= @post.period_of_day %></p><p>Dirección del suceso: <%= @post.address %></p><p>Autor del relato: <% if @post.anonymous == false %><%= @post.user.username %><% else %>Anonimo<% end %></p>");
 $('.modal-footer-button').html('<%= button_to 'Relato Completo', post_path(@post.id), method: :get, class:"btn btn-primary" %> <br>')
 
 $("#infoModal").modal("show");

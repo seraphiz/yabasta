@@ -1,32 +1,36 @@
 <% if user_signed_in? %>
 <%= form_with(model:[post, comment]) do |f| %>
-    <%= f.label :content %>
-    <%= f.text_field :content, id: "field" %>
-    <br>
-    <%= f.label :anonymous %>
+    <%= f.text_field :content, id: "field", placeholder: 'Deja tú comentario', class: "form-control" %>
     <%= f.check_box :anonymous %>
-    <br>
-    <%= f.submit %>
+    <%= f.label :anonymous, 'Anónimo' %> 
+    <%= f.submit 'Comentar', class:"btn btn-success buton-aling" %>
 <% end %>
 <% else %>
 <% end %>
+<br>
+<div id="post_comments_list" class="list-group">
+    <% post.comments.each do |c| %>
+        <span id="<%= c.id %>"class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+               <p class="mb-1">
+                  <small><% if can? :destroy, c %>
+        <%= link_to 'X', post_comment_path(@post, c), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?', remote: true } %>
+    <% end %>
+                    <% if c.anonymous == 1 %> Anónimo:  
+                    <% else %> <%= c.user.username %>: 
+                    <% end %></small>
+                    <%= c.content %></p>
+      
+    </div>
+   <small><%= c.created_at.strftime('%d/%m/%Y a las %H:%M') %> </small>
+  </span>
+  
+  <% end %>
+</div>
 
 
-<ul id="post_comments_list" >
-<% post.comments.each do |c| %>
-<li id="<%= c.id %>"><%= c.content %> - 
 
-<% if c.anonymous == 1 %>
-Anonimo - 
-<% else %>
-<%= c.user.username %> - 
-<% end %>
-<%= c.created_at %> - 
-<% if can? :destroy, c %>
-<%= link_to 'X', post_comment_path(@post, c), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?', remote: true } %> </li>
 
-<% end %>
 
-<% end %>
 
-</ul>
+

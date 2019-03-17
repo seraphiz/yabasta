@@ -1,13 +1,19 @@
-<h1>INFORMACIONES</h1>
-<p>Find me in app/views/tags/index.html.erb</p>
-
-<ol>
+<div class="container">
+<div class="image1">
+        <h1>INFORMACIONES:</h1>
+    </div>
+</div>
+<div class="container center-cont">
+<div class="row">
+<div class="col-12 col-md-12 col-lg-12">
 <% @tags.each do |tag| %>
-<div class="card" style="width: 10rem;">
-  <img src="https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><%= link_to tag.title, tag %></h5>
-  </div>
+<div class="card card-float" style="width: 12rem;">
+  <%= link_to tag do %>
+  <%= image_tag "https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", size: '100', class: "responsive" %>
+  <% end %>
 </div>
 
 <% end %>
+</div>
+</div>
+</div>

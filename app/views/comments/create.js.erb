@@ -1,3 +1,3 @@
-$('#post_comments_list').append('<li><%= @comment.content %> - <%= @comment.user.username %> - <%= @comment.created_at %> - <%= link_to 'X', post_comment_path(@comment.post_id, @comment.id), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?', remote: true } %></li>')
+$('#post_comments_list').append('<span class="list-group-item list-group-item-action"><div class="d-flex w-100 justify-content-between"><p class="mb-1"><small><% if can? :destroy, @comment %>  <%= link_to 'X', post_comment_path(@comment.post_id, @comment.id), method: :delete, data: { confirm: 'Estás seguro que deseas eliminar el Comentario?', remote: true } %><% end %><% if @comment.anonymous == 1 %>Anónimo: <% else %> <%= @comment.user.username %>: <% end %></small><%= @comment.content %></p></div><small><%= @comment.created_at.strftime('%d/%m/%Y a las %H:%M') %> </small></span>')
 
 $('#field').val('');

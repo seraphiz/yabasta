@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row">
         <h1>Mi Perfil</h1>
+    <div class="row">
     </div>
     <div class="row">
     <div class="col-12 col-md-3 col-lg-3">
@@ -18,13 +18,18 @@
     </div>
     <div class="col-12 col-md-9 col-lg-9">
 
-    <ul>
-    <li><%= current_user.name %></li>
-    <li><%= current_user.email %></li>
-    <li><%= current_user.birthdate %></li>
-    <li><%= current_user.username %></li>
-    <li><%= current_user.genre %></li>
-    </ul>
+   <form action="">
+   <label for="">Nombre de usuario:</label>
+   <input type="text" value="<%= current_user.username %>" disabled> <br>
+   <label for="">Nomrbes y apellidos:</label>
+   <input type="text" value="<%= current_user.name%>" disabled><br>
+   <label for="">Fecha de nacimiento:</label>
+   <input type="text" value=" <%= current_user.birthdate.strftime('%d/%m/%Y') %>" disabled><br>
+   <label for="">Email:</label>
+   <input type="text" value=" <%= current_user.email %>" disabled>
+   </form>
+
+  <%= link_to 'Editar mi perifl', edit_user_registration_path %>
       
 
     </div>
