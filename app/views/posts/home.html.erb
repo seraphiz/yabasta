@@ -1,16 +1,18 @@
+<% content_for :title, "Home" %>
+<div class="cont-mod">
 <div id="map_div" style="height: 550px;"> </div> 
-    <div class="row">
-      <div class="col-12 col-md-6 col-lg-6 home1">
-        <h1>¡Ya BASTA!</h1>
-      </div>
+    
+      <%# <div class="col-12 col-md-6 col-lg-6 home1"> %>
+        <img src="<%= asset_path "logo.png"%>" class="img"alt="">
+      <%# </div> %>
 
-      <div class="col-12 col-md-6 col-lg-6 home2 center loguin">
+      <%# <div class="col-12 col-md-6 col-lg-6 home2 center loguin"> %>
 
         <%= button_to "COMPARTE TÚ RELATO", new_post_path, class: "btn1", method: :get, remote: true  %>
         <br>
-        <%= button_to "VEA EL MAPA", map_posts_path, class: "btn1", method: :get %>
-      </div>
-    </div>
+        <%= button_to "VEA EL MAPA", map_posts_path, class: "btn2", method: :get %>
+      <%# </div> %>
+    <%# </div> %>
 
 <%= render 'modal_posts' %>
 

@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">¡Ya BASTA!</a>
+<nav class="nab-zindex navbar navbar-expand-lg  navbar-light">
+  <a class="navbar-brand" href="#"> <img src="<%= asset_path "logo.png"%>" class="favicon2"alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -23,7 +23,7 @@
     </ul>
 <ul class="navbar-nav ml-auto">
     <% if signed_in? %>
-    <li class="nav-item dropdown">
+    <li class="nab-zindex nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Hola 
           <% if current_user.username == nil %>
@@ -33,7 +33,7 @@
           <% end %>
           
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <div class="nab-zindex dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="<%= users_path %>">Mi perfil</a>
           <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>        
         </div>

@@ -3,7 +3,7 @@
     <td id="cambio">
     <%= post.anonymous? ? 'Anónimo' : post.user.username %>
     </td>
-    <td><%= post.created_at %></td>
+    <td><%= post.created_at.strftime('%d/%m/%Y a las %H:%M') %></td>
     <td><%= post.active %></td>
     <td><%= link_to 'Anonimo', post, method: :patch, data: { confirm: post.anonymous? ? 'Tu relato dejará de ser anónimo, estas segura(o)?' : 'Tu relato pasara a ser anónimo, estas segura(o)?', remote: true } %></td>
     <td><%= link_to 'Ver más', post_path(post) %></td>

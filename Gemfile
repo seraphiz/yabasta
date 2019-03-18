@@ -34,6 +34,7 @@ gem 'omniauth-facebook'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'activeadmin'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

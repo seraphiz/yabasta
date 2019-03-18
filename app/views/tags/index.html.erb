@@ -1,16 +1,16 @@
+<% content_for :title, "Informaciones" %>
+<br>
 <div class="container">
 <div class="image1">
-        <h1>INFORMACIONES:</h1>
+         <img src="<%= asset_path "informaciones.png"%>" class="image1"alt="">
     </div>
 </div>
 <div class="container center-cont">
 <div class="row">
 <div class="col-12 col-md-12 col-lg-12">
 <% @tags.each do |tag| %>
-<div class="card card-float" style="width: 12rem;">
-  <%= link_to tag do %>
-  <%= image_tag "https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", size: '100', class: "responsive" %>
-  <% end %>
+<div class="card card-float divsize" style="width: 12rem;">
+  <%= link_to tag.title, tag, class: "link-info"%>
 </div>
 
 <% end %>

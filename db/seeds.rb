@@ -1,51 +1,46 @@
 
 # Tag.destroy_all
 # # SocialGroup.destroy_all
-# tag = ["Prefiero no decirlo", "Amenaza", "Acoso verbal", "Acoso físico", "Estupro", "Homofobia", "Racismo", "Atentado en contral el pudor", "Exploración sexual", "Stalking", "Transfobia", "Violencia doméstica", "Xenofobia", "Otros"]
-
+# tag = ["Prefiero no decirlo", "Amenaza", "Acoso verbal", "Acoso físico", "Violación", "Homofobia", "Racismo", "Atentado en contral el pudor", "Exploración sexual", "Misoginia", "Transfobia", "Violencia doméstica", "Xenofobia", "Otros"]
+# image = ["prefiero-no-decirlo.png", "amenaza.png", "acoso-verbal.png", "acoso-fisico.png", "violacion.png", "homofobia.png", "racismo.png", "atentado-en-control-el-pudor.png","exploracion-sexual.png", "misoginia.png", "transfobia.png", "violencia-domestica.png", "xenofobia.png", "otros.png"]
 # tag.each do |tag|
 #     Tag.create(
 #         title: tag
 #     )
 # end 
 
-# # social_group = ["Homosexuales", "Bisexuales", "Transexuales", "Extrangeros", "Indígenas", "Negros", "Personas en situacion de discapacidad", "Mujeres"]
-
-# # social_group.each do |asignacion|
-# #     SocialGroup.create(
-# #         name: asignacion
-# #     )
-# # end 
-
 # User.destroy_all
-# 20.times do |i|
+# 50.times do |i|
 #     User.create(
-#     name: Faker::Name.name,
-#     email: Faker::Internet.email,
+#     name: "Joao#{i+1}",
+#     email: "joaodasneves#{i+1}@gmail.com",
 #     password: "123456",
 #     genre: ["Masculino", "Femenino", "Otro"].sample,
 #     birthdate: Faker::Date.birthday(18, 65),
-#     username: "Joao das Neves #{i+1}"
+#     username: "Seraphiz#{i+1}"
 #     )
 # end
 
-Post.destroy_all
-tags = Tag.ids
-users = User.ids
-periodo = ["Prefiro no decirlo", "Mañana", "Tarde", "Noche", "Madrugada"]
+# Post.destroy_all
+# tags = Tag.ids
+# users = User.ids
+# periodo = ["Prefiro no decirlo", "Mañana", "Tarde", "Noche", "Madrugada"]
+# calles = ["Avenida Providencia, #{rand(200..2300)}, Providencia", "Avenida Tobalaba, #{rand(147..2099)}, Providencia"]
+# contenido = ["Estaba por la calle, cuando unos tipos de la contru gritaton palabras de bajo nivel hacia mi, queria contestarles, pero no tenia coraje, yo era solamente una y ellos eran muchos", "Caminando por la calle, un tipo me pego con una lampada en la cabeza y me grito que los homosexuales no deberian existir", "Estaba trabajando en el supermercado X cuando un cliente al percibir que yo soy extrangero, me trato mal y dijo que me devolviera a mi país.", "Estaba caminando por la calle y percibia que dos tipos me estaban siguiendo, no habia nadie en la calle a esa hora, tuve miedo, pense que algo mas grabe iba pasar, logra tomar un taxi que justo estaba pasando en el camino y me fui a mi casa.", "Con mi pareja, estabamos caminando de las manos, e unos tipos nos amenazaron con cuchillos, congelamos en el momento sin saber como reaccionar, no se como aun estamos vivas.", "Saliendo de la tienda X, el guardia me paro para averiguar si yo no me robava nada del supermercado, vivo a 2 cuadras del supermercado y voy casi todos los dias, el guardia era nuevo esta mas que claro que lo hizo por mi color de piel", "No pude defenderme, eran 2 y yo solo una, estaban por hacer el peor cuando llego auxilio."]
 
-50.times do 
-    Post.create(
-        tag_id: tags.sample,
-        user_id: users.sample,
-        date: Faker::Date.between(2.years.ago, Date.today),
-        age: rand(1..64),
-        period_of_day: periodo.sample,
-        address: Faker::Address.street_name,
-        name: Faker::Name.name,
-        content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam odio mollitia tempora.",
-        anonymous: [true, false].sample,
-        active: [true, false].sample
+# 1000.times do 
+#     Post.create(
+#         tag_id: tags.sample,
+#         user_id: users.sample,
+#         date: Faker::Date.between(2.years.ago, Date.today),
+#         age: rand(1..64),
+#         period_of_day: periodo.sample,
+#         address: calles.sample,
+#         name: Faker::Name.name,
+#         content: contenido.sample,
+#         anonymous: [true, false].sample,
+#         active: [true, false].sample
 
-    )
-end 
+#     )
+# end 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

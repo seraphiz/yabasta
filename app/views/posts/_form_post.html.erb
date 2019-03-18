@@ -46,9 +46,10 @@
 
 <div class="form-group">
     <%= f.label :address, 'Dirección del ocurrido*:' %>
+    <p>Mientras más precisa sea la dirección del suceso, más facil es la localización en el mapa.</p>
     <div class="row">
       <div class="col-md-10">
-        <%= f.text_field :address, class: 'form-control', id: "address_location"%>
+        <%= f.text_field :address, class: 'form-control', id: "address_location", placeholder:'Ej: Avendia Providencia, 1234, Providencia'%>
       </div>
       <div class="col-md-2">
         <%= link_to "#", class:"btn btn-primary", id: "get_location" do %>
@@ -57,8 +58,7 @@
       </div>
     </div>
  </div>
-<div class="container"><div id="map" style='width: 100%; height: 400px;'></div></div>
-  <br>
+<%# <div class="container"><div id="map" style='width: 100%; height: 400px;'></div></div> %>
 <div class="row center">
   <div class="col-12 col-md-12 col-lg-12">
     <div class="form-check">
@@ -75,42 +75,42 @@
 <% end %>
 <script>
 
-var map = new google.maps.Map(document.getElementById("map"), {
-  center: new google.maps.LatLng(-33.4372, -70.6506),
-  zoom: 14,
-  streetViewControl: false,
-  mapTypeId: google.maps.MapTypeId.ROADMAP
-});
+// var map = new google.maps.Map(document.getElementById("map"), {
+//   center: new google.maps.LatLng(-33.4372, -70.6506),
+//   zoom: 14,
+//   streetViewControl: false,
+//   mapTypeId: google.maps.MapTypeId.ROADMAP
+// });
 
-  var marker = new google.maps.Marker({
-    position:{
-      lat: -33.4372,
-      lng: -70.6506
+//   var marker = new google.maps.Marker({
+//     position:{
+//       lat: -33.4372,
+//       lng: -70.6506
       
-    },
-    map: map,
-    draggable: true,
-  });
+//     },
+//     map: map,
+//     draggable: true,
+//   });
 
 
-  var searchBox = new google.maps.places.SearchBox(document.getElementById('address_location'));
+//   var searchBox = new google.maps.places.SearchBox(document.getElementById('address_location'));
 
-  google.maps.event.addListener(searchBox, 'places_changed', function(){
+//   google.maps.event.addListener(searchBox, 'places_changed', function(){
 
-    var places = searchBox.getPlaces();
+//     var places = searchBox.getPlaces();
 
-    var bounds = new google.maps.LatLngBounds();
-    var i, place;
+//     var bounds = new google.maps.LatLngBounds();
+//     var i, place;
 
-    for(i=0; place=places[i];i++){
+//     for(i=0; place=places[i];i++){
       
-      // console.log(place.geometry.location)
-      bounds.extend(place.geometry.location);
-      marker.setPosition(place.geometry.location);
-    }
-    map.fitBounds(bounds);
-    map.setZoom(15);
-  });
+//       // console.log(place.geometry.location)
+//       bounds.extend(place.geometry.location);
+//       marker.setPosition(place.geometry.location);
+//     }
+//     map.fitBounds(bounds);
+//     map.setZoom(15);
+//   });
 
 
 
