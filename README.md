@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://youtu.be/HkbuUTu-McQ - Link Youtube
 
-Things you may want to cover:
+https://trello.com/invite/b/Ngy2i3Uh/b2963a79556951044ff8576c1cf1bbd4/ya-basta - Link Trello
 
-* Ruby version
+Ya Basta
 
-* System dependencies
+La finalidad de este proyecto, es generar un ambiente seguro para cualquier persona que se sienta mal de algna manera. Ya basta genera la posibilidad de los usuarios compartir relatos donde pueden seleccionar desde un mapa donde ocurrio el suceso, luego pueden interactuar entre estas publicacionesl.
 
-* Configuration
+La idea es hacer con que usuarios que ya pasaron por una situacion de crimen de odio, no tengan que pasar por esto denuevo, asi pueden mirar en el mapa y buscar una rota alternativa donde pasar sin mayores preocupaciones o ver donde paso algo con otra persona y asi evitar este lugar.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+La idea es hacer con que todas las personas sepan que lugares tienen com mucha frecuencia estos ataques, para que se genere una visibilidad grande.
